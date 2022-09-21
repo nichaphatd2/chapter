@@ -1,4 +1,4 @@
-FROM node:16-alpine as development
+FROM node:18-alpine as development
 WORKDIR /usr/chapter/
 
 FROM development as build
@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci -w=server --ignore-scripts --include-workspace-root
 RUN npm -w=server run build
 
-FROM node:16-alpine as production
+FROM node:18-alpine as production
 WORKDIR /usr/chapter/
 
 COPY package*.json ./
